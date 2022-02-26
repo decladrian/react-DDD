@@ -1,0 +1,30 @@
+{
+  "id": 123,
+  "username": "SpanishBall",
+  "avatar": "https://i.guim.co.uk/img/media/8c7f4fe66d305fb86fc3246dd47a9c06d216f7ec/0_139_1268_761/master/1268.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=a2151d0d798639b1886db6c5bf5d8d20",
+  "summary": {
+    "groups": {
+      "total": 10,
+      "latest": [
+        {
+          "id": 111,
+          "name": "Team F",
+          "avatar": "https://i.guim.co.uk/img/media/8c7f4fe66d305fb86fc3246dd47a9c06d216f7ec/0_139_1268_761/master/1268.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=a2151d0d798639b1886db6c5bf5d8d20",
+          "total_members": 56
+        },
+        {
+          "id": 112,
+          "name": "Grupo Futbol",
+          "avatar": "https://i.guim.co.uk/img/media/8c7f4fe66d305fb86fc3246dd47a9c06d216f7ec/0_139_1268_761/master/1268.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=a2151d0d798639b1886db6c5bf5d8d20",
+          "total_members": 26
+        },
+        {
+          "id": 115,
+          "name": "Otro grupo de Futbol",
+          "avatar": "https://i.guim.co.uk/img/media/8c7f4fe66d305fb86fc3246dd47a9c06d216f7ec/0_139_1268_761/master/1268.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=a2151d0d798639b1886db6c5bf5d8d20",
+          "total_members": 86
+        }
+      ]
+    }
+  }
+}
