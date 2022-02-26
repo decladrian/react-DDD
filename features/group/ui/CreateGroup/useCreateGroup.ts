@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { FormHelper, ErrorTypes } from '../../../../shared';
+import { useFormReducer, ErrorTypes } from '../../../../shared';
 import { Group, ValidatorGroup, GroupController } from '../..';
+
+
 
 export const useCreateGroup = () => {
   const [errors, setErrors] = useState<any>({});
 
-  const { form, changeValue } =
-    new FormHelper<Group.createRequest>().useFormReducer({
-      name: '',
-    });
+  const { form, changeValue } = useFormReducer<Group.createRequest>({
+    name: '',
+  });
 
   const submit = () => {
     try {

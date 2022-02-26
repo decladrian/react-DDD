@@ -10,7 +10,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   find(payload) {
     return this.query.execute(
-      this.prefix.concat('create'),
+      this.prefix.concat('find'),
       () => this.repository.find(payload),
       {
         payload,
@@ -20,7 +20,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   findAll() {
     return this.query.execute(
-      this.prefix.concat('create'),
+      this.prefix.concat('findAll'),
       () => this.repository.findAll(),
       {
         cache: true,
