@@ -6,7 +6,6 @@ import { PostModels } from '../../domain/PostModels';
 import { usePostFormReducer } from './usePostFormReducer';
 
 export const usePostForm = (navigate) => {
-  const [errors, setErrors] = useState<any>({});
   const [postErrors, setPostErrors] = useState<PostModels.errors>({});
   useEffect(() => {
     const subscription = container.postSubscriber.$subject.subscribe(
@@ -25,7 +24,7 @@ export const usePostForm = (navigate) => {
       navigate('post');
     } catch (e: any) {
       if (e.type === ErrorTypes.invalidDataExecption) {
-        setErrors(e.errors);
+        setPostErrors(e.errors);
       }
     }
   };
@@ -44,7 +43,6 @@ export const usePostForm = (navigate) => {
     form,
     changeValue,
     submit,
-    errors,
     postErrors,
     setPostErrors,
     validateValue,
