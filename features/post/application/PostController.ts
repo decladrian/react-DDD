@@ -1,6 +1,7 @@
 import { container } from '../../../container';
-import { Controller, SemanticTypes } from '../../../shared';
+import { Controller, SemanticTypes, ValidationError } from '../../../shared';
 import { PostModels } from '../domain/PostModels';
+import { PostValidator } from './PostValidator';
 
 export class PostController extends Controller implements PostModels.useCases {
   private readonly repository = container.postRepository;
@@ -8,6 +9,10 @@ export class PostController extends Controller implements PostModels.useCases {
   private prefix = 'POST';
 
   save(payload: PostModels.saveRequest) {
+    const validator = new PostValidator(payload);
+    if (!validator.validate()) {
+      throw new ValidationError('Invalid payload', validator.getErrors());
+    }
     return this.command.execute(
       this.prefix.concat('_SAVE'),
       () => this.repository.save(payload),

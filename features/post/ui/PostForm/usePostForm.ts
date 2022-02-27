@@ -20,12 +20,6 @@ export const usePostForm = (navigate) => {
   const { form, changeValue } = usePostFormReducer();
 
   const submit = async () => {
-    setErrors({});
-    const validator = new PostValidator(form);
-    if (!validator.validate()) {
-      setPostErrors({ ...validator.getErrors() });
-      return;
-    }
     try {
       const result = await new PostController().save(form);
       navigate('post');

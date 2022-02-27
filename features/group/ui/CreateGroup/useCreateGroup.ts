@@ -5,11 +5,9 @@ import { Group, ValidatorGroup, GroupController } from '../..';
 export const useCreateGroup = () => {
   const [errors, setErrors] = useState<any>({});
 
-  const { form, changeValue } = useFormReducer<Group.createRequest>(
-    {
-      name: '',
-    }
-  );
+  const { form, changeValue } = useFormReducer<Group.createRequest>({
+    name: '',
+  });
 
   const submit = () => {
     try {
