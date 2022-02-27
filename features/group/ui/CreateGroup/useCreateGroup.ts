@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useFormReducer, ErrorTypes } from '../../../../shared';
 import { Group, ValidatorGroup, GroupController } from '../..';
 
-
-
 export const useCreateGroup = () => {
   const [errors, setErrors] = useState<any>({});
 
