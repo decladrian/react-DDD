@@ -10,16 +10,14 @@ export const useCreateGroup = () => {
     keyof Group.createRequest
   >(() => new GroupValidator(form));
 
-  const submit = () => {
-    try {
-      new GroupController().create(form);
-    } catch (e: any) {
+  const submit = async () => {
+    await new GroupController().create(form).catch((e: any) => {
       if (e.type === ErrorTypes.invalidDataExecption) {
         setErrors(e.errors);
       } else {
-        alert('UPSa');
+        alert('UPS!!! Something went wrong...');
       }
-    }
+    });
   };
 
   return {

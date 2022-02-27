@@ -17,7 +17,7 @@ export class GroupRepository implements Group.useCases {
   }
 
   create(model) {
-    return this.loadJson('response-action.json');
+    return this.loadJson('response-actio.json');
   }
 
   edit(model) {

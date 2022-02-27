@@ -31,8 +31,9 @@ export class GroupController extends Controller implements Group.useCases {
   create(payload) {
     const validator = new GroupValidator(payload);
     if (!validator.validate()) {
-      //return Promise.reject(validator.getErrors());
-      throw new ValidationError('Invalid payload', validator.getErrors());
+      return Promise.reject(
+        new ValidationError('Invalid payload', validator.getErrors())
+      );
     }
     return this.command.execute(
       this.prefix.concat('create'),
