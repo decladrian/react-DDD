@@ -17,7 +17,7 @@ export const useCreateGroup = () => {
       if (e.type === ErrorTypes.invalidDataExecption) {
         setErrors(e.errors);
       } else {
-        // ups...
+        alert('UPSa');
       }
     }
   };
