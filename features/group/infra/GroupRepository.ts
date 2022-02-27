@@ -9,42 +9,42 @@ export class GroupRepository implements Group.useCases {
   }
 
   find(groupId) {
-    return this.loadJson('group.json'));
+    return this.loadJson('group.json');
   }
 
   findAll() {
-    return this.loadJson('group-collection.json'));
+    return this.loadJson('group-collection.json');
   }
 
   create(model) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 
   edit(model) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 
   addAmin(userId) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 
   removeAdmin(userId) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 
   joinGroup(groupId) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 
   unjoinGroup(groupId) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 
   banUser(userId) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 
   invite(userId) {
-    return this.loadJson('response-action.json'));
+    return this.loadJson('response-action.json');
   }
 }
