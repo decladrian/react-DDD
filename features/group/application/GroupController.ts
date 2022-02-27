@@ -8,9 +8,13 @@ export class GroupController extends Controller implements Group.useCases {
 
   private prefix = 'GROUP';
 
+  private makeTag(sufix: string) {
+    return this.prefix.concat(`_${sufix.toUpperCase()}`);
+  }
+
   find(payload) {
     return this.query.execute(
-      this.prefix.concat('find'),
+      this.makeTag('find'),
       () => this.repository.find(payload),
       {
         payload,
@@ -20,7 +24,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   findAll() {
     return this.query.execute(
-      this.prefix.concat('findAll'),
+      this.makeTag('findAll'),
       () => this.repository.findAll(),
       {
         cache: true,
@@ -36,7 +40,7 @@ export class GroupController extends Controller implements Group.useCases {
       );
     }
     return this.command.execute(
-      this.prefix.concat('create'),
+      this.makeTag('create'),
       () => this.repository.create(payload),
       {
         payload,
@@ -50,7 +54,7 @@ export class GroupController extends Controller implements Group.useCases {
       throw new ValidationError('Invalid payload', validator.getErrors());
     }
     return this.command.execute(
-      this.prefix.concat('edit'),
+      this.makeTag('edit'),
       () => this.repository.edit(payload),
       {
         payload,
@@ -60,7 +64,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   addAmin(payload) {
     return this.command.execute(
-      this.prefix.concat('addAmin'),
+      this.makeTag('addAmin'),
       () => this.repository.addAmin(payload),
       {
         payload,
@@ -70,7 +74,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   removeAdmin(payload) {
     return this.command.execute(
-      this.prefix.concat('removeAdmin'),
+      this.makeTag('removeAdmin'),
       () => this.repository.removeAdmin(payload),
       {
         payload,
@@ -80,7 +84,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   joinGroup(payload) {
     return this.command.execute(
-      this.prefix.concat('joinGroup'),
+      this.makeTag('joinGroup'),
       () => this.repository.joinGroup(payload),
       {
         payload,
@@ -90,7 +94,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   unjoinGroup(payload) {
     return this.command.execute(
-      this.prefix.concat('unjoinGroup'),
+      this.makeTag('unjoinGroup'),
       () => this.repository.unjoinGroup(payload),
       {
         payload,
@@ -100,7 +104,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   banUser(payload) {
     return this.command.execute(
-      this.prefix.concat('banUser'),
+      this.makeTag('banUser'),
       () => this.repository.banUser(payload),
       {
         payload,
@@ -110,7 +114,7 @@ export class GroupController extends Controller implements Group.useCases {
 
   invite(payload) {
     return this.command.execute(
-      this.prefix.concat('invite'),
+      this.makeTag('invite'),
       () => this.repository.invite(payload),
       {
         payload,

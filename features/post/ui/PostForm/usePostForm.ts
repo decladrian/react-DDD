@@ -19,12 +19,14 @@ export const usePostForm = (navigate) => {
   const { form, changeValue } = usePostFormReducer();
 
   const submit = async () => {
-      const result = await new PostController().save(form).catch((e: any) => {
-        if (e.type === ErrorTypes.invalidDataExecption) {
-          setPostErrors(e.errors);
-        }
-      });
+    const result = await new PostController().save(form).catch((e: any) => {
+      if (e.type === ErrorTypes.invalidDataExecption) {
+        setPostErrors(e.errors);
+      }
+    });
+    if (result && result.success) {
       navigate('post');
+    }
   };
 
   const validateValue = (key: PostModels.key) => {

@@ -11,7 +11,6 @@ interface AppState {
   page: 'form' | 'collection' | 'post';
 }
 
-
 class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
@@ -22,7 +21,6 @@ class App extends Component<AppProps, AppState> {
   }
 
   navigate(page) {
-    alert(page);
     this.setState({ page });
   }
 
