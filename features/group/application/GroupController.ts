@@ -43,7 +43,7 @@ export class GroupController extends Controller implements Group.useCases {
   }
 
   edit(payload) {
-    const validator = new ValidatorGroup(payload);
+    const validator = new GroupValidator(payload);
     if (!validator.validate()) {
       throw new ValidationError('Invalid payload', validator.getErrors());
     }
