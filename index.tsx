@@ -24,9 +24,6 @@ class App extends Component<AppProps, AppState> {
     this.setState({ page });
   }
 
-  componentDidMount() {
-    //this.navigate('form');
-  }
 
   render() {
     return (
