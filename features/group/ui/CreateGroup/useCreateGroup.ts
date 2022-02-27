@@ -11,6 +11,7 @@ export const useCreateGroup = () => {
   >(() => new GroupValidator(form));
 
   const submit = async () => {
+
     const { success } = await new GroupController()
       .create(form)
       .catch((e: any) => {

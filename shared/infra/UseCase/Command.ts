@@ -15,7 +15,7 @@ export class Command extends UseCase {
       var data = await useCaseCall();
       this.logger.log('RUN COMMAND:', key, data, settings);
     } catch (e) {
-      alert('1');
+      alert(e.message);
       throw new GenericError('Use Case Error');
     }
     return data;
