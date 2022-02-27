@@ -24,7 +24,6 @@ class App extends Component<AppProps, AppState> {
     this.setState({ page });
   }
 
-
   render() {
     return (
       <div>
