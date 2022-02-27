@@ -11,7 +11,9 @@ export class PostController extends Controller implements PostModels.useCases {
   save(payload: PostModels.saveRequest) {
     const validator = new PostValidator(payload);
     if (!validator.validate()) {
-      throw new ValidationError('Invalid payload', validator.getErrors());
+      return Promise.reject(
+        new ValidationError('Invalid payload', validator.getErrors())
+      );
     }
     return this.command.execute(
       this.prefix.concat('_SAVE'),
