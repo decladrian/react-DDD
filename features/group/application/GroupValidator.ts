@@ -1,7 +1,7 @@
 import { Group } from '..';
 import { Validator } from '../../../shared/application/Validator';
 
-export class ValidatorGroup extends Validator<Group.model> {
+export class GroupValidator extends Validator<Group.model> {
   constructor(private data: Group.model) {
     super();
   }
