@@ -1,7 +1,7 @@
 import { Controller, SemanticTypes, ValidationError } from '../../../shared';
 import { Group } from '../domain/Group';
 import { container } from '../../../container';
-import { ValidatorGroup } from './ValidatorGroup';
+import { GroupValidator } from './GroupValidator';
 
 export class GroupController extends Controller implements Group.useCases {
   private readonly repository = container.groupRepository;
@@ -29,7 +29,7 @@ export class GroupController extends Controller implements Group.useCases {
   }
 
   create(payload) {
-    const validator = new ValidatorGroup(payload);
+    const validator = new GroupValidator(payload);
     if (!validator.validate()) {
       throw new ValidationError('Invalid payload', validator.getErrors());
     }

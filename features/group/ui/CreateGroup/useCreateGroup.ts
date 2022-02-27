@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { useFormReducer, ErrorTypes } from '../../../../shared';
-import { Group, ValidatorGroup, GroupController } from '../..';
+import { useFormReducer, ErrorTypes, useFormErrors } from '../../../../shared';
+import { Group, GroupValidator, GroupController } from '../..';
 
 export const useCreateGroup = () => {
-  const [errors, setErrors] = useState<any>({});
-
   const { form, changeValue } = useFormReducer<Group.createRequest>({
     name: '',
   });
+  const { validateValue, errors, setErrors } = useFormErrors<
+    keyof Group.createRequest
+  >(() => new GroupValidator(form));
 
   const submit = () => {
     try {
@@ -15,17 +16,9 @@ export const useCreateGroup = () => {
     } catch (e: any) {
       if (e.type === ErrorTypes.invalidDataExecption) {
         setErrors(e.errors);
+      } else {
+        // ups...
       }
-    }
-  };
-
-  const validateValue = (key: keyof Group.model) => {
-    const _errors = { ...errors };
-    const validator = new ValidatorGroup(form);
-    delete _errors[key];
-    if (validator.validations[key]) {
-      validator.validations[key]();
-      setErrors({ ..._errors, ...validator.getErrors() });
     }
   };
 
