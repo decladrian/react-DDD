@@ -11,13 +11,16 @@ export const useCreateGroup = () => {
   >(() => new GroupValidator(form));
 
   const submit = async () => {
-    await new GroupController().create(form).catch((e: any) => {
-      if (e.type === ErrorTypes.invalidDataExecption) {
-        setErrors(e.errors);
-      } else {
-        alert('UPS!!! Something went wrong...');
-      }
-    });
+    const { success } = await new GroupController()
+      .create(form)
+      .catch((e: any) => {
+        if (e.type === ErrorTypes.invalidDataExecption) {
+          setErrors(e.errors);
+        } else {
+          alert('UPS!!! Something went wrong...');
+        }
+      });
+    alert(success);
   };
 
   return {
