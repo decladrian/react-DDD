@@ -38,7 +38,6 @@ export namespace Group {
     removeAdmin: (userId: SemanticTypes.ID) => MyApi.responseAction;
     joinGroup: (groupId: SemanticTypes.ID) => MyApi.responseAction;
     unjoinGroup: (groupId: SemanticTypes.ID) => MyApi.responseAction;
-    banUser: (userId: SemanticTypes.ID) => MyApi.responseAction;
-    invite: (userId: SemanticTypes.ID) => MyApi.responseAction;
+
   }
 }

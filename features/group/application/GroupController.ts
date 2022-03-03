@@ -101,24 +101,4 @@ export class GroupController extends Controller implements Group.useCases {
       }
     );
   }
-
-  banUser(payload) {
-    return this.command.execute(
-      this.makeTag('banUser'),
-      () => this.repository.banUser(payload),
-      {
-        payload,
-      }
-    );
-  }
-
-  invite(payload) {
-    return this.command.execute(
-      this.makeTag('invite'),
-      () => this.repository.invite(payload),
-      {
-        payload,
-      }
-    );
-  }
 }
