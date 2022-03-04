@@ -1,10 +1,10 @@
 import { Command } from '../../../../shared';
 import { container } from '../../../../container';
 
-export class AddAdminCmd extends Command<number> {
+export class CreateGroupCmd extends Command<any> {
   private readonly repository = container.groupRepository;
 
-  action(payload: number): Promise<any> => {
+  action(payload: any): Promise<any> => {
     return this.repository.addAmin(payload);
   }
 

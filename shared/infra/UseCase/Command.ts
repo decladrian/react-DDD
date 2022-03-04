@@ -4,8 +4,6 @@ import { UseCase } from './UseCase';
 export abstract class Command<ActionPayloadT> {
   constructor(protected logger, protected alert) {}
 
-  abstract find(): string;
-
   abstract action(payload: ActionPayloadT): Promise<any>;
 
   async execute(
