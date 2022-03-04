@@ -2,7 +2,7 @@ import { Controller, SemanticTypes, ValidationError } from '../../../shared';
 import { Group } from '../domain/Group';
 import { container } from '../../../container';
 import { GroupValidator } from './GroupValidator';
-import { CreateGoupCmd } from './use/Cases/CreateGoupCmd';
+import { CreateGroupCmd } from './useCases/CreateGroupCmd';
 
 export class GroupController extends Controller implements Group.useCases {
   private readonly repository = container.groupRepository;
@@ -40,8 +40,8 @@ export class GroupController extends Controller implements Group.useCases {
         new ValidationError('Invalid payload', validator.getErrors())
       );
     }
-    return new CreateGoupCmd().invoke(payload);
-
+    alert(JSON.stringify(container.groupRepository));
+    return new CreateGroupCmd().invoke(payload);
   }
 
   edit(payload) {

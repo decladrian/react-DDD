@@ -2,9 +2,9 @@ import { GenericError } from '../../domain/error/GenericError';
 import { UseCase } from './UseCase';
 
 export abstract class Command<ActionPayloadT> {
-  constructor(protected logger, protected alert) {}
+  constructor() {}
 
-  abstract action(payload: ActionPayloadT): Promise<any>;
+  abstract action: (payload: ActionPayloadT) => Promise<any>;
 
   async execute(
     key: string,
@@ -12,10 +12,11 @@ export abstract class Command<ActionPayloadT> {
     settings?: { payload?: unknown }
   ): Promise<any> {
     try {
+      console.log('..', settings?.payload);
       var data = await useCaseCall(settings?.payload);
-      this.logger.log('RUN COMMAND:', key, data, settings);
+      //this.logger.log('RUN COMMAND:', key, data, settings);
     } catch (e) {
-      alert(e.message);
+      alert('l');
       throw new GenericError('Use Case Error');
     }
     return data;

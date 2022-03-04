@@ -2,9 +2,15 @@ import { Command } from '../../../../shared';
 import { container } from '../../../../container';
 
 export class CreateGroupCmd extends Command<any> {
-  private readonly repository = container.groupRepository;
+  private repository: any;
 
-  action(payload: any): Promise<any> => {
+  constructor() {
+    this.repository = container.groupRepository;
+  }
+
+  action(payload: any): Promise<any> {
+    alert('as');
+    alert(JSON.stringify(payload));
     return this.repository.create(payload);
   }
 
@@ -12,8 +18,8 @@ export class CreateGroupCmd extends Command<any> {
     if (!payload) {
       //throw new InvalidInvokeParameterError()
     }
-    return this.execute('ADD_ADMIN_CMD', this.action , {
+    return this.execute('ADD_ADMIN_CMD', this.action, {
       payload,
-    })
+    });
   }
 }

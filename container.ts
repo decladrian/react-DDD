@@ -14,7 +14,6 @@ export interface Contanier {
   postRepository: PostModels.useCases;
   profileRepository: UserModel.useCases;
   groupRepository: Group.useCases;
-  Command: Command;
   Query: Query;
   postSubscriber: PostSubscriber;
   DateMapper: DateMapper;
@@ -33,7 +32,6 @@ const infra = {
   groupRepository: new GroupRepository(),
   //@ts-ignore
   postSubscriber: new PostSubscriber(new Subject(() => {})),
-  Command: new Command(libs.Logger, (data) => alert(data)),
   Query: new Query(libs.Logger),
   DateMapper: new DateMapper(),
 };
