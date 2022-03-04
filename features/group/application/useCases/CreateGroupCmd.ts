@@ -5,7 +5,7 @@ export class CreateGroupCmd extends Command<any> {
   private readonly repository = container.groupRepository;
 
   action(payload: any): Promise<any> => {
-    return this.repository.addAmin(payload);
+    return this.repository.create(payload);
   }
 
   invoke(payload: any) {

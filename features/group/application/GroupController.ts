@@ -2,6 +2,7 @@ import { Controller, SemanticTypes, ValidationError } from '../../../shared';
 import { Group } from '../domain/Group';
 import { container } from '../../../container';
 import { GroupValidator } from './GroupValidator';
+import { CreateGoupCmd } from './use/Cases/CreateGoupCmd';
 
 export class GroupController extends Controller implements Group.useCases {
   private readonly repository = container.groupRepository;
@@ -39,13 +40,8 @@ export class GroupController extends Controller implements Group.useCases {
         new ValidationError('Invalid payload', validator.getErrors())
       );
     }
-    return this.command.execute(
-      this.makeTag('create'),
-      () => this.repository.create(payload),
-      {
-        payload,
-      }
-    );
+    return new CreateGoupCmd().invoke(payload);
+
   }
 
   edit(payload) {
