@@ -1,16 +1,16 @@
-import { Command } from '../../../../shared';
+import { Command, ValidationError } from '../../../../shared';
 import { container } from '../../../../container';
 
-export class AddAdminCmd extends Command<number> {
+export class CreateGroupCmd extends Command<bumber> {
   private readonly repository = container.groupRepository;
 
   action = (payload: number): Promise<any> => {
     return this.repository.addAmin(payload);
   };
 
-  invoke(payload: any) {
+  async invoke(payload: number) {
     if (!payload) {
-      //throw new InvalidInvokeParameterError()
+      return Promise.reject(new ValidationError('Invalid payload', {}));
     }
     return this.execute('ADD_ADMIN_CMD', this.action, {
       payload,
