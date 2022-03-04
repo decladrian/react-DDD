@@ -1,18 +1,20 @@
 import { GenericError } from '../../domain/error/GenericError';
 import { UseCase } from './UseCase';
 
-export class Command extends UseCase {
-  constructor(protected logger, protected alert) {
-    super(logger);
-  }
+export abstract class Command<ActionPayloadT> {
+  constructor(protected logger, protected alert) {}
 
-  async execute<T>(
+  abstract find(): string;
+
+  abstract action(payload: ActionPayloadT): Promise<any>;
+
+  async execute(
     key: string,
-    useCaseCall: () => Promise<T>,
+    useCaseCall: (...args: any) => Promise<any>,
     settings?: { payload?: unknown }
-  ): Promise<T> {
+  ): Promise<any> {
     try {
-      var data = await useCaseCall();
+      var data = await useCaseCall(settings?.payload);
       this.logger.log('RUN COMMAND:', key, data, settings);
     } catch (e) {
       alert(e.message);
