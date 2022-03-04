@@ -20,7 +20,7 @@ export interface Contanier {
 }
 
 export const libs = {
-  Logger: console,
+  Logger: () => console,
   analytics: Analytics,
   Subject,
   CacheQuery: InMemoryCache,

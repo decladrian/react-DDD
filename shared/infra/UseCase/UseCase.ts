@@ -1,9 +1,7 @@
-export abstract class UseCase {
-  constructor(protected logger) {}
+import { libs } from '../../../container';
 
-  abstract execute<T>(
-    key: string,
-    useCaseCall: () => Promise<T>,
-    settings?: { payload?: any }
-  ): Promise<T>;
+export abstract class UseCase {
+  protected readonly logger = libs.Logger();
+
+  abstract execute(...args): Promise<any>;
 }
