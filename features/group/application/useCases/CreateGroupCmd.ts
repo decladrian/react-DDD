@@ -1,6 +1,7 @@
 import { Command, ValidationError } from '../../../../shared';
 import { container } from '../../../../container';
 import { GroupValidator } from '../GroupValidator';
+import { Group } from '../../domain/Group';
 
 export class CreateGroupCmd extends Command<any> {
   private readonly repository = container.groupRepository;
@@ -9,7 +10,7 @@ export class CreateGroupCmd extends Command<any> {
     return this.repository.create(payload);
   };
 
-  async invoke(payload: any) {
+  async run(payload: Group.model) {
     const validator = new GroupValidator(payload);
     if (!validator.validate()) {
       return Promise.reject(
