@@ -5,4 +5,5 @@ export namespace SemanticTypes {
   export type DATETIME = number;
   export type ID = number;
   export type NIF = string;
+  export type CODE_ISO = string;
 }

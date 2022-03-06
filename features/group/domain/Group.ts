@@ -4,10 +4,13 @@ export namespace Group {
   export interface model {
     id?: SemanticTypes.ID;
     name: string;
+    country: SemanticTypes.CODE_ISO;
     total_members: number;
     owner: summaryUser;
     admins: summaryUser[];
   }
+
+  export type key = keyof model;
 
   interface summaryModel {
     id?: SemanticTypes.ID;

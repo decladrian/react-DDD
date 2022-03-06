@@ -7,7 +7,7 @@ export const useCreateGroup = () => {
   });
   const { validateValue, errors, setErrors } = useFormErrors<
     keyof Group.createRequest
-  >(() => new GroupValidator(form));
+  >((key: any) => new GroupController().validateProp(key, form));
 
   const onSubmitError = (e: any) => {
     if (e.type === ErrorTypes.invalidDataExecption) {
