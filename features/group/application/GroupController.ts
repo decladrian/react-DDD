@@ -5,6 +5,6 @@ import { CreateGroupCmd } from './useCases/CreateGroupCmd';
 
 export class GroupController {
   create(payload: Group.createRequest) {
-    return new CreateGroupCmd().run(payload);
+    return new CreateGroupCmd().run(payload as any);
   }
 }
